@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest httpx
+
+      - name: Syntax / import check
+        env:
+          SECRET_KEY: ci-test-secret-key-not-for-production-use-only
+          STRIPE_SECRET_KEY: ""
+          DATABASE_URL: sqlite+aiosqlite:///./data/ci_test.db
+        run: |
+          mkdir -p data resumes logs
+          python -c "from app.config import get_settings; print(get_settings().app_name)"
+          python -c "from app.models import User, Application, JobListing; print('models ok')"
+          python -c "from app.auth import hash_password, verify_password; h=hash_password('testpass99'); assert verify_password('testpass99', h)"
+          python -c "from app.security import encrypt_secret, decrypt_secret; assert decrypt_secret(encrypt_secret('x'))=='x'"
+          python -c "from app.billing import stripe_configured; print('stripe', stripe_configured())"
+          python -c "import app.main; print('main import ok')"
+
+      - name: Security hygiene
+        run: |
+          ! grep -RInE 'sk_live_|whsec_[A-Za-z0-9]{20,}|BEGIN RSA PRIVATE KEY' \
+            --exclude-dir=.git --exclude-dir=.venv --exclude='*.md' . || \
+            (echo "Possible secret material found" && exit 1)
+          test -f .gitignore
+          test -f .env.example
+          grep -q 'STRIPE_PRICE_LIFETIME_CENTS=2000' .env.example
