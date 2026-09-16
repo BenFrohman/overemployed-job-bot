@@ -26,4 +26,4 @@ google-auth-oauthlib==1.2.1
 twilio==9.4.1
 ollama==0.4.5
 tenacity==9.0.0
-rich==13.9.4
+rich==15.0.0
