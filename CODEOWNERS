@@ -1,0 +1,13 @@
+# Default owner for all paths in this proprietary repository.
+* @BenFrohman
+
+# Governance and security-sensitive files
+LICENSE @BenFrohman
+COPYRIGHT @BenFrohman
+NOTICE @BenFrohman
+SECURITY.md @BenFrohman
+CODEOWNERS @BenFrohman
+.env.example @BenFrohman
+.github/ @BenFrohman
+app/auth/ @BenFrohman
+app/security.py @BenFrohman

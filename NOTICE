@@ -1,0 +1,19 @@
+Overemployed-Job Bot
+Copyright (c) 2026 Benjamin Frohman. All rights reserved.
+
+This product includes third-party open-source software. The application
+code in this repository is proprietary. Dependency licenses are separate
+and remain with their respective copyright holders.
+
+Notable runtime dependencies (see requirements.txt for pinned versions):
+- FastAPI, Uvicorn, Starlette (ASGI web stack)
+- SQLAlchemy, aiosqlite (persistence)
+- Pydantic / pydantic-settings (configuration)
+- Passlib, bcrypt, python-jose, cryptography (auth and secrets)
+- Stripe Python SDK (billing; cards never stored by this application)
+- Playwright, BeautifulSoup, lxml, httpx (scanning / HTTP)
+- Google API client libraries and Twilio SDK (optional integrations)
+- Ollama Python client (local model inference)
+
+Do not treat the presence of open-source dependencies as permission to
+copy, fork, or redistribute this product.
