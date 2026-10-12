@@ -1,6 +1,6 @@
 # Overemployed-Job Bot
 
-**Developer:** Benjamin Frohman  
+**Developer:** Benjamin Stanley Frohman  
 **Status:** Proprietary commercial product — multi-tenant SaaS for remote AI job hunting.
 
 | Plan | Detail |
@@ -9,7 +9,7 @@
 | Unlock | **$20 one-time** lifetime access (Stripe Checkout) |
 | Privacy | Per-user sandbox (resume, prefs, applications) |
 
-Copyright (c) 2026 Benjamin Frohman. All rights reserved. See [`LICENSE`](LICENSE), [`COPYRIGHT`](COPYRIGHT), and [`NOTICE`](NOTICE).
+Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. See [`LICENSE`](LICENSE), [`COPYRIGHT`](COPYRIGHT), and [`NOTICE`](NOTICE).
 
 ## Visibility and source control
 
@@ -73,7 +73,7 @@ Never commit `.env`, `data/credentials.json`, `data/token.json`, private keys, c
 
 ## License and copyright
 
-This repository is licensed under the proprietary terms in [`LICENSE`](LICENSE). All rights are reserved by **Benjamin Frohman**.
+This repository is licensed under the proprietary terms in [`LICENSE`](LICENSE). All rights are reserved by **Benjamin Stanley Frohman**.
 
 - No right to copy, fork publicly, redistribute, or create derivative products is granted by access to this repository.
 - Third-party packages in `requirements.txt` keep their own licenses; those licenses do not cover this application.

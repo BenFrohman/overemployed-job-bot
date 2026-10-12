@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Overemployed-Job Bot – entry point.
-Developer: Benjamin Frohman
+Developer: Benjamin Stanley Frohman
 
 Usage:
   1. cp .env.example .env   and set SECRET_KEY (+ Stripe keys for production)

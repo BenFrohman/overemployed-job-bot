@@ -28,6 +28,6 @@ cp .env.example .env
 
 ## License
 
-By contributing, you assign the contribution to Benjamin Frohman and agree it
+By contributing, you assign the contribution to Benjamin Stanley Frohman and agree it
 is covered by the proprietary license in `LICENSE`. Do not submit code you
 cannot assign.
