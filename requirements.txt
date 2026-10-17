@@ -8,7 +8,7 @@ apscheduler==3.10.4
 python-dotenv==1.0.1
 pydantic==2.10.4
 pydantic-settings==2.7.0
-reportlab==4.2.5
+reportlab==5.0.1
 python-multipart==0.0.20
 passlib[bcrypt]==1.7.4
 bcrypt==4.0.1
