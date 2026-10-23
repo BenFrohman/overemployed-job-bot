@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 from app.auth.rbac import (
     Role,
     Permission,

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 if ! command -v gh >/dev/null || ! gh auth status >/dev/null 2>&1; then

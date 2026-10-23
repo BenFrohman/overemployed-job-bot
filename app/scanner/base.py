@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 """Shared helpers for job scanners."""
 from __future__ import annotations
 

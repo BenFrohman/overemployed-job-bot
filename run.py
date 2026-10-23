@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 """
 Overemployed-Job Bot – entry point.
 Developer: Benjamin Stanley Frohman

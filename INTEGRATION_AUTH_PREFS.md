@@ -1,3 +1,4 @@
+<!-- Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. -->
 # Auth + Preferences integration
 
 ## 1. Middleware (main.py)

@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 """Async database setup."""
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from app.config import get_settings

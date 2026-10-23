@@ -1,3 +1,4 @@
+<!-- Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. -->
 # Contributing
 
 This is a **private commercial product**. Contributions are by invitation only.

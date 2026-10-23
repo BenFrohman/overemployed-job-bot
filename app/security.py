@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 """OpSec helpers: rate limiting, secret encryption, request hardening."""
 from __future__ import annotations
 

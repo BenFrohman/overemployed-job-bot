@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 version: 2
 updates:
   - package-ecosystem: pip

@@ -1,3 +1,4 @@
+<!-- Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. -->
 ## Summary
 
 <!-- What changed and why. -->
