@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using the metadata below."
+title: "Overemployed-Job Bot — multi-tenant private SaaS for remote AI job hunting. 24h free trial, $20 lifetime. Developer: Benjamin Stanley Frohman. Proprietary."
+authors:
+  - family-names: "Frohman"
+    given-names: "Benjamin Stanley"
+    orcid: "https://orcid.org/0009-0006-7068-3718"
+    email: "frohmanbenjamin@gmail.com"
+license: "LicenseRef-Proprietary"
+repository-code: "https://github.com/BenFrohman/overemployed-job-bot"
