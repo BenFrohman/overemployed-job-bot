@@ -1,11 +1,5 @@
-# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-import os
-import tempfile
+# Copyright 2026 Benjamin Stanley Frohman. Licensed under the Apache License, Version 2.0.
 
-_db = tempfile.mkdtemp()
-os.environ.setdefault("SECRET_KEY", "test-secret-key-for-pytest-only-0123456789")
-os.environ["DATABASE_URL"] = f"sqlite+aiosqlite:///{_db}/t.db"
-os.environ["STRIPE_SECRET_KEY"] = ""
 
 import asyncio  # noqa: E402
 
@@ -20,7 +14,7 @@ from app.models import JobListing  # noqa: E402
 def _add_job():
     async def go():
         async with AsyncSessionLocal() as db:
-            j = JobListing(source="t", external_id="1", title="AI tutor (remote)")
+            j = JobListing(source="t", external_id="1", title="AI tutor (remote)", remote=True)  # source "t" = test-only
             db.add(j)
             await db.commit()
             return j.id
@@ -37,7 +31,7 @@ def test_flow_and_tenant_isolation():
         assert a.post("/api/signup", json={"email": "A@x.io", "password": "password1"}).status_code == 201
         assert a.post("/api/signup", json={"email": "a@x.io", "password": "password1"}).status_code == 409
         assert b.post("/api/signup", json={"email": "b@x.io", "password": "password2"}).status_code == 201
-        assert a.get("/api/me").json()["has_access"] is True
+        assert a.get("/api/me").json()["is_admin"] is False
         jid = _add_job()
         assert len(a.get("/api/jobs").json()) == 1
         app_id = a.post("/api/applications", json={"job_id": jid}).json()["id"]
@@ -47,8 +41,11 @@ def test_flow_and_tenant_isolation():
         assert a.post("/api/preferences", json={"field": "math", "keywords": ["tutor"]}).json()["keywords"] == ["tutor"]
         assert b.get("/api/preferences").json()["field"] == ""
         assert b.get("/api/admin/users").status_code == 403
-        assert a.post("/api/billing/checkout").status_code == 503
-        assert a.post("/api/billing/webhook", content=b"{}").status_code == 400
+        assert a.post("/api/billing/checkout").status_code == 404  # no paid plan exists
+        assert len(a.get("/api/jobs").json()) == 1  # matches a's keyword "tutor"
+        a.post("/api/preferences", json={"keywords": ["astronomy"]})
+        assert a.get("/api/jobs").json() == []
+        assert len(a.get("/api/jobs", params={"all": True}).json()) == 1
         a.post("/api/logout")
         a.cookies.clear()
         assert a.get("/api/me").status_code == 401

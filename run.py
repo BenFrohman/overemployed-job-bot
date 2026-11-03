@@ -5,12 +5,12 @@ Overemployed-Job Bot – entry point.
 Developer: Benjamin Stanley Frohman
 
 Usage:
-  1. cp .env.example .env   and set SECRET_KEY (+ Stripe keys for production)
+  1. cp .env.example .env   and set SECRET_KEY
   2. ollama serve && ollama pull llama3.1:8b
   3. playwright install chromium
   4. python run.py
 
-Open http://127.0.0.1:8743 → Start free 24h trial → $20 lifetime via Stripe.
+Open http://127.0.0.1:8743 and create an account (free).
 """
 import asyncio
 import os

@@ -25,17 +25,22 @@ class Settings(BaseSettings):
 
     database_url: str = "sqlite+aiosqlite:///./data/app.db"
 
-    trial_hours: int = 24
-    stripe_price_lifetime_cents: int = 2000
-    stripe_secret_key: str = ""
-    stripe_publishable_key: str = ""
-    stripe_webhook_secret: str = ""
-    stripe_price_id: str = ""
 
     login_rate_limit: int = 10
     login_rate_window_seconds: int = 300
 
     scan_interval_minutes: int = 60
+    scan_timeout_seconds: float = 20.0
+    # Comma-separated: remotive,remoteok,arbeitnow,greenhouse,lever,ashby (empty = none)
+    scanners_enabled: str = "remotive,remoteok,arbeitnow,greenhouse,lever,ashby"
+    # Comma-separated public job-board slugs, e.g. "anthropic,openai" (empty by default)
+    greenhouse_boards: str = ""
+    lever_companies: str = ""
+    ashby_boards: str = ""
+    scanner_user_agent: str = "overemployed-job-bot/1.0 (+https://github.com/BenFrohman/overemployed-job-bot)"
+
+    def csv_list(self, value: str) -> list[str]:
+        return [v.strip().lower() for v in value.split(",") if v.strip()]
 
     google_client_id: str = ""
     google_client_secret: str = ""

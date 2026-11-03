@@ -2,7 +2,7 @@
 """ORM models. Tenant data is scoped by user_id; JobListing is a shared catalog."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from typing import Optional
 
 from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
@@ -25,26 +25,9 @@ class User(Base):
     password_hash: Mapped[str] = mapped_column(String(128))
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
-    trial_ends_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
-    lifetime_paid: Mapped[bool] = mapped_column(Boolean, default=False)
-    stripe_customer_id: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
 
     applications: Mapped[list["Application"]] = relationship(back_populates="user", cascade="all, delete-orphan")
     preference: Mapped[Optional["UserPreference"]] = relationship(back_populates="user", uselist=False, cascade="all, delete-orphan")
-
-    def start_trial(self, hours: int) -> None:
-        self.trial_ends_at = utcnow() + timedelta(hours=hours)
-
-    def has_access(self, now: Optional[datetime] = None) -> bool:
-        if self.is_admin or self.lifetime_paid:
-            return True
-        if self.trial_ends_at is None:
-            return False
-        now = now or utcnow()
-        ends = self.trial_ends_at
-        if ends.tzinfo is None:  # SQLite drops tzinfo
-            ends = ends.replace(tzinfo=timezone.utc)
-        return now < ends
 
 
 class JobListing(Base):
@@ -59,6 +42,7 @@ class JobListing(Base):
     location: Mapped[str] = mapped_column(String(256), default="")
     url: Mapped[str] = mapped_column(String(1024), default="")
     description: Mapped[str] = mapped_column(Text, default="")
+    remote: Mapped[bool] = mapped_column(Boolean, default=False)
     discovered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 

@@ -30,7 +30,6 @@ jobs:
       - name: Syntax / import check
         env:
           SECRET_KEY: ci-test-secret-key-not-for-production-use-only
-          STRIPE_SECRET_KEY: ""
           DATABASE_URL: sqlite+aiosqlite:///./data/ci_test.db
         run: |
           mkdir -p data resumes logs
@@ -38,7 +37,7 @@ jobs:
           python -c "from app.models import User, Application, JobListing; print('models ok')"
           python -c "from app.auth import hash_password, verify_password; h=hash_password('testpass99'); assert verify_password('testpass99', h)"
           python -c "from app.security import encrypt_secret, decrypt_secret; assert decrypt_secret(encrypt_secret('x'))=='x'"
-          python -c "from app.billing import stripe_configured; print('stripe', stripe_configured())"
+          python -c "from app.scanners import SOURCES; print('scanners', sorted(SOURCES))"
           python -c "import app.main; print('main import ok')"
 
       - name: Tests
@@ -53,4 +52,4 @@ jobs:
             (echo "Possible secret material found" && exit 1)
           test -f .gitignore
           test -f .env.example
-          grep -q 'STRIPE_PRICE_LIFETIME_CENTS=2000' .env.example
+          grep -q '^SCANNERS_ENABLED=' .env.example

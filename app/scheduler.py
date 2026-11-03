@@ -23,6 +23,7 @@ class ScannedJob:
     location: str = ""
     url: str = ""
     description: str = ""
+    remote: bool = False
 
 
 Scanner = Callable[[], Awaitable[Iterable[ScannedJob]]]
@@ -38,8 +39,13 @@ def register_scanner(fn: Scanner) -> Scanner:
 async def store_jobs(jobs: Iterable[ScannedJob]) -> int:
     """Insert applicable, not-yet-seen jobs. Returns the number added."""
     added = 0
+    seen: set[tuple[str, str]] = set()
     async with AsyncSessionLocal() as db:
         for j in jobs:
+            key = (j.source, j.external_id)
+            if key in seen:
+                continue
+            seen.add(key)
             if not looks_applicable(j.title, j.description, j.location):
                 continue
             exists = await db.execute(select(JobListing.id).where(
@@ -48,13 +54,23 @@ async def store_jobs(jobs: Iterable[ScannedJob]) -> int:
                 continue
             db.add(JobListing(source=j.source, external_id=j.external_id, title=j.title,
                               company=j.company, location=j.location, url=j.url,
-                              description=j.description))
+                              description=j.description, remote=j.remote))
             added += 1
         await db.commit()
     return added
 
 
+def register_enabled_scanners() -> None:
+    """Register the scanners selected by SCANNERS_ENABLED (idempotent)."""
+    from app.scanners import build_scanners
+    SCANNERS.clear()
+    for fn in build_scanners():
+        register_scanner(fn)
+
+
 async def run_scan_cycle() -> int:
+    if not SCANNERS:
+        register_enabled_scanners()
     total = 0
     for scanner in SCANNERS:
         try:

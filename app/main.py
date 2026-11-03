@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-"""FastAPI application: auth, tenant-scoped jobs/applications, billing."""
+"""FastAPI application: auth and tenant-scoped jobs/applications/preferences."""
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
@@ -8,11 +8,10 @@ from typing import Optional
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel, EmailStr, Field
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app import billing
 from app.auth import (
     Permission, assert_own_resource, hash_password, require_admin,
     require_authenticated, require_permission, scope_user_id, verify_password,
@@ -21,7 +20,7 @@ from app.auth.deps import AuthUserMiddleware
 from app.auth.tokens import create_session_token
 from app.config import get_settings
 from app.database import get_db, init_db
-from app.models import Application, AuditLog, JobListing, User
+from app.models import Application, AuditLog, JobListing, User, UserPreference
 from app.preferences import router as preferences_router
 from app.security import client_ip, rate_limiter
 
@@ -55,10 +54,8 @@ async def audit(db: AsyncSession, request: Request, action: str, user_id: Option
 
 
 def require_access(request: Request) -> User:
-    user = require_authenticated(request)
-    if not user.has_access():
-        raise HTTPException(402, "Trial expired — unlock lifetime access")
-    return user
+    """Every signed-in user has full access; data stays scoped to the user."""
+    return require_authenticated(request)
 
 
 class Credentials(BaseModel):
@@ -83,16 +80,13 @@ def _set_session(resp: Response, user_id: int) -> None:
 
 
 def _user_out(u: User) -> dict:
-    return {"id": u.id, "email": u.email, "is_admin": u.is_admin, "lifetime_paid": u.lifetime_paid,
-            "trial_ends_at": u.trial_ends_at.isoformat() if u.trial_ends_at else None,
-            "has_access": u.has_access()}
+    return {"id": u.id, "email": u.email, "is_admin": u.is_admin}
 
 
 @app.get("/", response_class=HTMLResponse)
 async def landing():
     return (f"<!doctype html><title>{settings.app_name}</title><h1>{settings.app_name}</h1>"
-            f"<p>{settings.trial_hours}-hour free trial, then ${settings.stripe_price_lifetime_cents / 100:.0f} "
-            "one-time lifetime access.</p><p><a href='/app'>Open the app</a></p>")
+            "<p>Free and open source remote job finder.</p><p><a href='/app'>Open the app</a></p>")
 
 
 @app.get("/app", response_class=HTMLResponse)
@@ -104,7 +98,7 @@ async def app_shell(request: Request):
 
 @app.get("/health")
 async def health():
-    return {"ok": True, "app": settings.app_name, "stripe": billing.stripe_configured()}
+    return {"ok": True, "app": settings.app_name}
 
 
 @app.post("/api/signup")
@@ -112,7 +106,6 @@ async def signup(body: Credentials, request: Request, db: AsyncSession = Depends
     if not rate_limiter.allow(f"signup:{client_ip(request)}", settings.login_rate_limit, settings.login_rate_window_seconds):
         raise HTTPException(429, "Too many attempts")
     user = User(email=body.email.lower(), password_hash=hash_password(body.password))
-    user.start_trial(settings.trial_hours)
     db.add(user)
     try:
         await db.flush()
@@ -156,13 +149,24 @@ async def me(request: Request):
 
 
 @app.get("/api/jobs")
-async def jobs(request: Request, limit: int = 50, offset: int = 0, db: AsyncSession = Depends(get_db)):
-    require_access(request)
+async def jobs(request: Request, limit: int = 50, offset: int = 0, all: bool = False,
+               db: AsyncSession = Depends(get_db)):
+    """Shared catalog, filtered by the caller's own preferences unless all=true."""
+    user = require_access(request)
     limit = max(1, min(limit, 200))
-    rows = (await db.execute(select(JobListing).order_by(JobListing.discovered_at.desc())
-                             .limit(limit).offset(max(0, offset)))).scalars().all()
+    q = select(JobListing).order_by(JobListing.discovered_at.desc(), JobListing.id.desc())
+    pref = None if all else (await db.execute(
+        select(UserPreference).where(UserPreference.user_id == user.id))).scalar_one_or_none()
+    if pref is not None:
+        if pref.remote_only:
+            q = q.where(JobListing.remote.is_(True))
+        kws = pref.keyword_list()
+        if kws:
+            q = q.where(or_(*[or_(func.lower(JobListing.title).contains(k),
+                                  func.lower(JobListing.description).contains(k)) for k in kws]))
+    rows = (await db.execute(q.limit(limit).offset(max(0, offset)))).scalars().all()
     return [{"id": j.id, "source": j.source, "title": j.title, "company": j.company,
-             "location": j.location, "url": j.url} for j in rows]
+             "location": j.location, "remote": j.remote, "url": j.url} for j in rows]
 
 
 def _app_out(a: Application) -> dict:
@@ -218,47 +222,6 @@ async def delete_application(app_id: int, request: Request, db: AsyncSession = D
     await db.commit()
     return {"ok": True}
 
-
-@app.post("/api/billing/checkout")
-async def checkout(request: Request):
-    user = require_authenticated(request)
-    if user.lifetime_paid:
-        return {"already_paid": True}
-    if not billing.stripe_configured():
-        raise HTTPException(503, "Billing is not configured")
-    return {"url": billing.create_checkout_session(user.id, user.email)}
-
-
-@app.post("/api/billing/webhook")
-async def stripe_webhook(request: Request, db: AsyncSession = Depends(get_db)):
-    payload = await request.body()
-    try:
-        event = billing.parse_webhook(payload, request.headers.get("stripe-signature", ""))
-    except ValueError:
-        raise HTTPException(400, "Invalid webhook")
-    uid = billing.paid_user_id(event)
-    if uid is not None:
-        user = await db.get(User, uid)
-        if user is not None and not user.lifetime_paid:
-            user.lifetime_paid = True
-            user.stripe_customer_id = event["data"]["object"].get("customer")
-            await audit(db, request, "lifetime_unlocked", uid, event.get("id", ""))
-            await db.commit()
-    return {"received": True}
-
-
-@app.post("/api/dev/unlock")
-async def dev_unlock(request: Request, db: AsyncSession = Depends(get_db)):
-    """Local development only: unlock without Stripe when Stripe is unconfigured and the client is loopback."""
-    user = require_authenticated(request)
-    host = request.client.host if request.client else ""
-    if billing.stripe_configured() or host not in {"127.0.0.1", "::1", "localhost"}:
-        raise HTTPException(404, "Not found")
-    u = await db.get(User, user.id)
-    u.lifetime_paid = True
-    await audit(db, request, "dev_unlock", u.id)
-    await db.commit()
-    return _user_out(u)
 
 
 @app.get("/api/admin/users")
