@@ -43,7 +43,9 @@ class JobListing(Base):
     url: Mapped[str] = mapped_column(String(1024), default="")
     description: Mapped[str] = mapped_column(Text, default="")
     remote: Mapped[bool] = mapped_column(Boolean, default=False)
+    sector: Mapped[str] = mapped_column(String(128), default="")
     discovered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    last_seen_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=True)
 
 
 class Application(Base):
@@ -75,6 +77,43 @@ class UserPreference(Base):
 
     def keyword_list(self) -> list[str]:
         return [k.strip().lower() for k in self.keywords.split(",") if k.strip()]
+
+
+class UserProfile(Base):
+    """What a person brings and what they want their work to change. Private to its user."""
+    __tablename__ = "user_profiles"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), unique=True, index=True)
+    skills: Mapped[str] = mapped_column(Text, default="")
+    experience: Mapped[str] = mapped_column(Text, default="")
+    values: Mapped[str] = mapped_column(Text, default="")
+    causes: Mapped[str] = mapped_column(Text, default="")
+    desired_impact: Mapped[str] = mapped_column(Text, default="")
+    location: Mapped[str] = mapped_column(String(256), default="")
+    remote_preference: Mapped[str] = mapped_column(String(16), default="any")  # remote | hybrid | onsite | any
+    comp_floor: Mapped[int] = mapped_column(Integer, default=0)  # yearly, in the posting's currency
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+
+
+class JobFeedback(Base):
+    """Save / dismiss signals that tune one user's ranking."""
+    __tablename__ = "job_feedback"
+    __table_args__ = (UniqueConstraint("user_id", "job_id", name="uq_feedback_user_job"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    job_id: Mapped[int] = mapped_column(ForeignKey("job_listings.id", ondelete="CASCADE"))
+    action: Mapped[str] = mapped_column(String(16))  # save | dismiss
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class ScanState(Base):
+    """Small key/value store for scanner bookkeeping (e.g. the board rotation cursor)."""
+    __tablename__ = "scan_state"
+
+    key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    value: Mapped[str] = mapped_column(Text, default="")
 
 
 class AuditLog(Base):

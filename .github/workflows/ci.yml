@@ -38,6 +38,8 @@ jobs:
           python -c "from app.auth import hash_password, verify_password; h=hash_password('testpass99'); assert verify_password('testpass99', h)"
           python -c "from app.security import encrypt_secret, decrypt_secret; assert decrypt_secret(encrypt_secret('x'))=='x'"
           python -c "from app.scanners import SOURCES; print('scanners', sorted(SOURCES))"
+          python -c "from app.matching import rank, Profile; print('matching ok')"
+          python -c "from app.registry import load_registry; print('registry', len(load_registry()))"
           python -c "import app.main; print('main import ok')"
 
       - name: Tests

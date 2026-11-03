@@ -31,16 +31,35 @@ class Settings(BaseSettings):
 
     scan_interval_minutes: int = 60
     scan_timeout_seconds: float = 20.0
-    # Comma-separated: remotive,remoteok,arbeitnow,greenhouse,lever,ashby (empty = none)
-    scanners_enabled: str = "remotive,remoteok,arbeitnow,greenhouse,lever,ashby"
-    # Comma-separated public job-board slugs, e.g. "anthropic,openai" (empty by default)
+    # Comma-separated sources (empty = none):
+    # remotive,remoteok,arbeitnow,hn,greenhouse,lever,ashby,workable,smartrecruiters,recruitee
+    scanners_enabled: str = "remotive,remoteok,arbeitnow,hn,greenhouse,lever,ashby,workable,smartrecruiters,recruitee"
+    # Use data/companies.json (validated company boards) for the ATS sources.
+    use_company_registry: bool = True
+    # Extra comma-separated board slugs on top of the registry, e.g. "anthropic,openai".
     greenhouse_boards: str = ""
     lever_companies: str = ""
     ashby_boards: str = ""
+    workable_accounts: str = ""
+    smartrecruiters_companies: str = ""
+    recruitee_companies: str = ""
+    # Rotation: how many registry boards each cycle visits; a full sweep spreads over many cycles.
+    boards_per_cycle: int = 300
+    per_host_concurrency: int = 4
+    per_host_min_interval_seconds: float = 0.25
+    http_retries: int = 3
+    # "all" keeps every listing (matching ranks them); "applicable" keeps the legacy
+    # non-engineering/remote filter from app.scanner.base.looks_applicable.
+    catalog_filter: str = "all"
+    job_retention_days: int = 45
+    # Optional local sentence-embedding model (needs `pip install sentence-transformers`).
+    match_embeddings: bool = False
+    embedding_model: str = "all-MiniLM-L6-v2"
+    match_rate_limit: int = 60
     scanner_user_agent: str = "overemployed-job-bot/1.0 (+https://github.com/BenFrohman/overemployed-job-bot)"
 
     def csv_list(self, value: str) -> list[str]:
-        return [v.strip().lower() for v in value.split(",") if v.strip()]
+        return [v.strip() for v in value.split(",") if v.strip()]
 
     google_client_id: str = ""
     google_client_secret: str = ""
