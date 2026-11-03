@@ -41,9 +41,14 @@ jobs:
           python -c "from app.billing import stripe_configured; print('stripe', stripe_configured())"
           python -c "import app.main; print('main import ok')"
 
+      - name: Tests
+        env:
+          SECRET_KEY: ci-test-secret-key-not-for-production-use-only
+        run: python -m pytest -q tests
+
       - name: Security hygiene
         run: |
-          ! grep -RInE 'sk_live_|whsec_[A-Za-z0-9]{20,}|BEGIN RSA PRIVATE KEY' \
+          ! grep -RInE 'sk_live[_]|whsec_[A-Za-z0-9]{20,}|BEGIN RSA PRIVATE[ ]KEY' \
             --exclude-dir=.git --exclude-dir=.venv --exclude='*.md' . || \
             (echo "Possible secret material found" && exit 1)
           test -f .gitignore

@@ -1,4 +1,5 @@
 # Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+from app.auth.passwords import hash_password, verify_password
 from app.auth.rbac import (
     Role,
     Permission,
@@ -12,6 +13,8 @@ from app.auth.rbac import (
 )
 
 __all__ = [
+    "hash_password",
+    "verify_password",
     "Role",
     "Permission",
     "role_from_user",
