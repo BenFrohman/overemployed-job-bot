@@ -1,0 +1,47 @@
+name: Refresh company registry
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"  # weekly, Monday 09:17 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: refresh-companies
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write  # only this job may push the refreshed data/companies.json
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate every company against its live public API
+        run: python scripts/refresh_companies.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/companies.json; then
+            echo "Registry unchanged"; exit 0
+          fi
+          git config user.name "Benjamin Frohman"
+          git config user.email "frohmanbenjamin@gmail.com"
+          git add data/companies.json
+          git commit -m "Refresh company registry"
+          git push

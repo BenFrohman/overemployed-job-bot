@@ -8,7 +8,16 @@ under its own license, including FastAPI, Uvicorn, SQLAlchemy, Pydantic,
 bcrypt, python-jose, cryptography, httpx, APScheduler, Playwright,
 BeautifulSoup and the Ollama client.
 
+Company registry (data/companies.json) seed data:
+- LastRound AI ATS company directory (https://github.com/fyrosofttech/lastroundai-hiring-data),
+  licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Data from LastRound AI,
+  https://lastroundai.com/blog/salary-transparency-study-2026. Board slugs and company names
+  were taken and re-validated against the live ATS APIs; dead entries were removed.
+- Africa ATS Directory (https://github.com/Thelastpoet/africa-ats-directory), MIT License.
+  Board slugs, names and sectors were taken and re-validated.
+
 Job listings are fetched at runtime from public sources (Remotive, RemoteOK,
-Arbeitnow, and Greenhouse/Lever/Ashby job boards). Listing content belongs to
+Arbeitnow, Hacker News via the Algolia API, and Greenhouse, Lever, Ashby,
+Workable, SmartRecruiters and Recruitee job boards). Listing content belongs to
 those sources and the posting employers; RemoteOK requires attribution, so
 each RemoteOK listing links back to remoteok.com.
