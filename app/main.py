@@ -22,6 +22,7 @@ from app.config import get_settings
 from app.database import get_db, init_db
 from app.models import Application, AuditLog, JobListing, User, UserPreference
 from app.preferences import router as preferences_router
+from app.purpose import router as purpose_router
 from app.security import client_ip, rate_limiter
 
 settings = get_settings()
@@ -38,6 +39,7 @@ async def lifespan(_: FastAPI):
 app = FastAPI(title=settings.app_name, lifespan=lifespan)
 app.add_middleware(AuthUserMiddleware)
 app.include_router(preferences_router)
+app.include_router(purpose_router)
 
 
 @app.middleware("http")
@@ -86,7 +88,7 @@ def _user_out(u: User) -> dict:
 @app.get("/", response_class=HTMLResponse)
 async def landing():
     return (f"<!doctype html><title>{settings.app_name}</title><h1>{settings.app_name}</h1>"
-            "<p>Free and open source remote job finder.</p><p><a href='/app'>Open the app</a></p>")
+            "<p>Free, open-source job finder that matches people to work that fits their skills and purpose.</p><p><a href='/app'>Open the app</a></p>")
 
 
 @app.get("/app", response_class=HTMLResponse)
@@ -166,7 +168,7 @@ async def jobs(request: Request, limit: int = 50, offset: int = 0, all: bool = F
                                   func.lower(JobListing.description).contains(k)) for k in kws]))
     rows = (await db.execute(q.limit(limit).offset(max(0, offset)))).scalars().all()
     return [{"id": j.id, "source": j.source, "title": j.title, "company": j.company,
-             "location": j.location, "remote": j.remote, "url": j.url} for j in rows]
+             "location": j.location, "remote": j.remote, "sector": j.sector, "url": j.url} for j in rows]
 
 
 def _app_out(a: Application) -> dict:
