@@ -1,4 +1,4 @@
-# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+# Copyright 2026 Benjamin Stanley Frohman. Licensed under the Apache License, Version 2.0.
 """ORM models. Tenant data is scoped by user_id; JobListing is a shared catalog."""
 from __future__ import annotations
 

@@ -1,13 +1,11 @@
-<!-- Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. -->
+<!-- Copyright 2026 Benjamin Stanley Frohman. Licensed under the Apache License, Version 2.0. -->
 # Contributing
 
-This is a **private commercial product**. Contributions are by invitation only.
+Overemployed-Job Bot is free and open source under the Apache License 2.0. Issues and pull requests are welcome.
 
 ## Ground rules
 
-- Do not fork this repository to a public account.
-- Do not copy source into another public project.
-- Do not commit secrets, customer data, resumes, or live Stripe keys.
+- Do not commit secrets, user data, resumes, or API keys.
 - Keep changes scoped. Open a pull request against `main` when collaborating.
 
 ## Local setup
@@ -23,12 +21,12 @@ cp .env.example .env
 ## Pull requests
 
 1. Create a feature branch from `main`.
-2. Keep commits focused and describe the customer-facing impact.
-3. Confirm `.gitignore` still excludes `.env`, `data/*.db`, tokens, and resumes.
-4. Request review from `@BenFrohman` (see `CODEOWNERS`).
+2. Keep commits focused and describe the user-facing impact.
+3. Run `python -m pytest -q tests` (tests must not hit the network; mock HTTP).
+4. Confirm `.gitignore` still excludes `.env`, `data/*.db`, tokens, and resumes.
+5. Request review from `@BenFrohman` (see `CODEOWNERS`).
 
 ## License
 
-By contributing, you assign the contribution to Benjamin Stanley Frohman and agree it
-is covered by the proprietary license in `LICENSE`. Do not submit code you
-cannot assign.
+By contributing, you agree your contribution is licensed under the Apache License,
+Version 2.0 (see `LICENSE`), as described in section 5 of that license.

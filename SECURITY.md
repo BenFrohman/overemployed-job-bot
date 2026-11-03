@@ -1,9 +1,9 @@
-<!-- Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. -->
+<!-- Copyright 2026 Benjamin Stanley Frohman. Licensed under the Apache License, Version 2.0. -->
 # Security Policy
 
 ## Supported product
 
-This repository contains the proprietary source for **Overemployed-Job Bot**.
+This repository contains the open-source code for **Overemployed-Job Bot**.
 Security reports should target the current `main` branch.
 
 ## Reporting a vulnerability
@@ -23,15 +23,14 @@ Please allow a reasonable window for investigation before any public disclosure.
 
 - Authentication and session handling (JWT httpOnly cookies, password hashing)
 - Tenant isolation (`user_id` scoping of resumes, preferences, and applications)
-- Stripe webhook signature verification and billing unlock state
-- Secret handling (`SECRET_KEY`, `ENCRYPTION_KEY`, Stripe keys, OAuth tokens)
+- Job-scanner handling of untrusted remote content
+- Secret handling (`SECRET_KEY`, `ENCRYPTION_KEY`, OAuth tokens)
 - Rate limiting, CSRF, and proxy-header trust (`TRUST_PROXY_HEADERS`)
 - Accidental commit of `.env`, `data/credentials.json`, `data/token.json`, or private keys
 
 ## Operational expectations
 
-- Keep the repository **private**. Customers do not need GitHub access.
-- Never commit live Stripe keys (`sk_live_`, `whsec_`) or private keys.
+- Never commit API keys, tokens, or private keys.
 - Rotate `SECRET_KEY` / `ENCRYPTION_KEY` if they are exposed; existing encrypted blobs will not decrypt with a new key.
 - Set a unique production `SECRET_KEY`. Do not ship the `change-me` default.
 - Enable GitHub secret scanning, push protection, and Dependabot alerts in repository settings.
@@ -39,5 +38,5 @@ Please allow a reasonable window for investigation before any public disclosure.
 ## Out of scope
 
 - Findings that require physical access to a developer workstation
-- Issues solely in third-party services (Stripe, GitHub, Ollama) with no product-side defect
+- Issues solely in third-party services (job boards, GitHub, Ollama) with no product-side defect
 - Social-engineering reports without a technical vulnerability

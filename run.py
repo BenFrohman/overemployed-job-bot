@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+# Copyright 2026 Benjamin Stanley Frohman. Licensed under the Apache License, Version 2.0.
 """
 Overemployed-Job Bot – entry point.
 Developer: Benjamin Stanley Frohman

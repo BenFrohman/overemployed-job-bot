@@ -1,17 +1,9 @@
-Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
+Copyright 2026 Benjamin Stanley Frohman
 
 Product: Overemployed-Job Bot
 Repository: https://github.com/BenFrohman/overemployed-job-bot
 Copyright holder: Benjamin Stanley Frohman
 GitHub: @BenFrohman
 
-This work and all associated source code, documentation, trademarks, and
-product design are owned exclusively by Benjamin Stanley Frohman unless a file
-states otherwise.
-
-Third-party open-source packages listed in requirements.txt remain the
-property of their respective authors and are used under their own licenses.
-Those licenses do not extend to this proprietary application code.
-
-For licensing inquiries, open a private security or legal advisory through
-GitHub or contact the copyright holder directly.
+Licensed under the Apache License, Version 2.0. See LICENSE and NOTICE.
+Third-party packages listed in requirements.txt keep their own licenses.

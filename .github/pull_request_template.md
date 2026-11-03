@@ -7,7 +7,7 @@
 
 - [ ] No secrets, `.env` files, private keys, customer data, or resumes are included
 - [ ] Tenant isolation and auth behavior are unchanged or intentionally updated
-- [ ] Stripe / webhook handling remains signature-verified if billing code changed
+- [ ] Scanner changes use timeouts, isolate failures, and are tested with mocked HTTP only
 - [ ] `.gitignore` still excludes local data and credentials
 
 ## Test plan
