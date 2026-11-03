@@ -1,5 +1,7 @@
 # Overemployed-Job Bot
 
+[![ci.yml](https://github.com/BenFrohman/overemployed-job-bot/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/BenFrohman/overemployed-job-bot/actions/workflows/ci.yml)
+
 **Developer:** Benjamin Stanley Frohman  
 **Status:** Proprietary commercial product — multi-tenant SaaS for remote AI job hunting.
 
