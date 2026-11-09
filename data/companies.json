@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-03",
+ "generated": "2026-11-09",
  "validated_against": "live public ATS APIs",
  "counts": {
-  "greenhouse": 4458,
-  "lever": 2040,
-  "ashby": 2609,
+  "greenhouse": 4448,
+  "lever": 2034,
+  "ashby": 2603,
   "workable": 5,
   "smartrecruiters": 1,
   "recruitee": 0
  },
- "total": 9113,
+ "total": 9091,
  "seeds": [
   {
    "id": "lastroundai",
@@ -661,14 +661,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "alden",
-   "name": "Alden Labs, Inc.",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "alembic",
    "name": "Alembic",
    "sources": [
@@ -863,14 +855,6 @@
    "ats": "ashby",
    "slug": "ambrook",
    "name": "Ambrook",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "ameba",
-   "name": "Ameba",
    "sources": [
     "lastroundai"
    ]
@@ -3639,14 +3623,6 @@
    "ats": "ashby",
    "slug": "clarion",
    "name": "Clarion",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "clarity",
-   "name": "Clarity",
    "sources": [
     "lastroundai"
    ]
@@ -8181,6 +8157,14 @@
   },
   {
    "ats": "ashby",
+   "slug": "hifi",
+   "name": "HIFI",
+   "sources": [
+    "lastroundai"
+   ]
+  },
+  {
+   "ats": "ashby",
    "slug": "higgsfieldai",
    "name": "Higgsfield",
    "sources": [
@@ -10834,14 +10818,6 @@
    "ats": "ashby",
    "slug": "mandolin",
    "name": "Mandolin",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "mandrel",
-   "name": "Mandrel",
    "sources": [
     "lastroundai"
    ]
@@ -15632,14 +15608,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "revic",
-   "name": "Revic",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "revinate",
    "name": "Revinate",
    "sources": [
@@ -15650,14 +15618,6 @@
    "ats": "ashby",
    "slug": "reviserobotics",
    "name": "Revise Robotics",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "revive",
-   "name": "Revive",
    "sources": [
     "lastroundai"
    ]
@@ -16114,14 +16074,6 @@
    "ats": "ashby",
    "slug": "samsungnext",
    "name": "Samsung Next",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "sana-roles",
-   "name": "Sana",
    "sources": [
     "lastroundai"
    ]
@@ -22259,14 +22211,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "allencontrolsystems",
-   "name": "Allen Control Systems",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "allenintegratedsolutions",
    "name": "Allen Integrated Solutions",
    "sources": [
@@ -26688,6 +26632,14 @@
    "ats": "greenhouse",
    "slug": "cascadeloans",
    "name": "Cascade Financial Services",
+   "sources": [
+    "lastroundai"
+   ]
+  },
+  {
+   "ats": "greenhouse",
+   "slug": "cascalahealth",
+   "name": "Cascala Health",
    "sources": [
     "lastroundai"
    ]
@@ -34599,14 +34551,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "gr8tech",
-   "name": "GR8_TECH",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "gracent",
    "name": "Gracent",
    "sources": [
@@ -36791,14 +36735,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "innovid",
-   "name": "Innovid",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "ino",
    "name": "Innovative Air",
    "sources": [
@@ -37775,14 +37711,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "jugabet",
-   "name": "jugabet",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "jukeboxhealth",
    "name": "Jukebox Health",
    "sources": [
@@ -38089,14 +38017,6 @@
    "ats": "greenhouse",
    "slug": "katalyst",
    "name": "katalyst",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "kayak",
-   "name": "KAYAK",
    "sources": [
     "lastroundai"
    ]
@@ -39353,14 +39273,6 @@
    "ats": "greenhouse",
    "slug": "link2feed",
    "name": "link2feed",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "linkhealth",
-   "name": "linkhealth",
    "sources": [
     "lastroundai"
    ]
@@ -44623,14 +44535,6 @@
    "ats": "greenhouse",
    "slug": "parkland",
    "name": "parkland",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "parloa",
-   "name": "Parloa",
    "sources": [
     "lastroundai"
    ]
@@ -52741,14 +52645,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "tigergraph",
-   "name": "TigerGraph",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "tightly",
    "name": "tightly",
    "sources": [
@@ -53255,14 +53151,6 @@
    "ats": "greenhouse",
    "slug": "triplewhale",
    "name": "Triple Whale",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "tripwireinteractive",
-   "name": "tripwireinteractive",
    "sources": [
     "lastroundai"
    ]
@@ -54109,14 +53997,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "urbansportsclub",
-   "name": "Urban Sports Club",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "ursamajor",
    "name": "ursamajor",
    "sources": [
@@ -54879,14 +54759,6 @@
    "ats": "greenhouse",
    "slug": "visasq",
    "name": "visasq",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "viseai",
-   "name": "Vise",
    "sources": [
     "lastroundai"
    ]
@@ -58413,14 +58285,6 @@
   },
   {
    "ats": "lever",
-   "slug": "beta",
-   "name": "BETA Technologies",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "betr",
    "name": "Betr",
    "sources": [
@@ -59578,14 +59442,6 @@
    "ats": "lever",
    "slug": "civitech",
    "name": "Civitech",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "clari",
-   "name": "Clari",
    "sources": [
     "lastroundai"
    ]
@@ -62768,14 +62624,6 @@
   },
   {
    "ats": "lever",
-   "slug": "hap-capital",
-   "name": "HAP Capital",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "happy-sleep",
    "name": "Happy Health",
    "sources": [
@@ -63490,14 +63338,6 @@
    "ats": "lever",
    "slug": "infraservices",
    "name": "InfraServices",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "InfrastructureandCapitalProjects",
-   "name": "Accenture Infrastructure and Capital Projects, LLC",
    "sources": [
     "lastroundai"
    ]
@@ -65652,14 +65492,6 @@
    "ats": "lever",
    "slug": "mistplay",
    "name": "Mistplay",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "mistral",
-   "name": "Mistral AI",
    "sources": [
     "lastroundai"
    ]
@@ -72119,14 +71951,6 @@
    "ats": "lever",
    "slug": "vowforgirls",
    "name": "VOW for Girls",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "voxy-engen",
-   "name": "EnGen",
    "sources": [
     "lastroundai"
    ]
