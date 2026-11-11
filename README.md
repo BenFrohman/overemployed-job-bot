@@ -149,3 +149,7 @@ Enable the following in GitHub if they are not already on:
 ## Engineering note
 
 Earlier commits held only a skeleton: CI imported `app.config`, `app.models`, `app.main`, `app.scheduler`, and `app.auth.rbac`, but several of those modules had never been committed. They were newly implemented on **Nov 3, 2026** (they are not a recovered original), along with the job scanners and the test suite, and the paid billing layer was removed when the project became free.
+
+## Citation
+
+Cite this work with [`CITATION.cff`](CITATION.cff) (GitHub's "Cite this repository" button).
