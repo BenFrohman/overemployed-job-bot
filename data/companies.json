@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-09",
+ "generated": "2026-11-16",
  "validated_against": "live public ATS APIs",
  "counts": {
-  "greenhouse": 4448,
-  "lever": 2034,
-  "ashby": 2603,
+  "greenhouse": 4434,
+  "lever": 2020,
+  "ashby": 2587,
   "workable": 5,
   "smartrecruiters": 1,
   "recruitee": 0
  },
- "total": 9091,
+ "total": 9047,
  "seeds": [
   {
    "id": "lastroundai",
@@ -167,14 +167,6 @@
    "ats": "ashby",
    "slug": "a-team",
    "name": "A.Team",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "a16z",
-   "name": "a16z",
    "sources": [
     "lastroundai"
    ]
@@ -2493,14 +2485,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "boam",
-   "name": "Boam AI",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "bodysoul",
    "name": "Body & Soul Studios",
    "sources": [
@@ -3701,14 +3685,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "cleric",
-   "name": "Cleric",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "clerk",
    "name": "Clerk",
    "sources": [
@@ -4311,14 +4287,6 @@
    "ats": "ashby",
    "slug": "coreplan",
    "name": "CorePlan",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "corridor",
-   "name": "Corridor",
    "sources": [
     "lastroundai"
    ]
@@ -5679,6 +5647,14 @@
    "ats": "ashby",
    "slug": "emberos",
    "name": "Emberos",
+   "sources": [
+    "lastroundai"
+   ]
+  },
+  {
+   "ats": "ashby",
+   "slug": "embo",
+   "name": "embo",
    "sources": [
     "lastroundai"
    ]
@@ -8213,14 +8189,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "hilberts",
-   "name": "Hilbert's AI",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "hims-and-hers",
    "name": "Hims & Hers",
    "sources": [
@@ -9533,14 +9501,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "kinetic",
-   "name": "Kinetic",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "kingdom",
    "name": "Kingdom",
    "sources": [
@@ -10413,24 +10373,8 @@
   },
   {
    "ats": "ashby",
-   "slug": "liveitup",
-   "name": "Live it Up",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "livekit",
    "name": "LiveKit",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "liven",
-   "name": "Liven",
    "sources": [
     "lastroundai"
    ]
@@ -10848,14 +10792,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "maple",
-   "name": "Maple",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "marble",
    "name": "Marble",
    "sources": [
@@ -10970,14 +10906,6 @@
    "ats": "ashby",
    "slug": "maven-agi",
    "name": "Maven AGI",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "mavericks",
-   "name": "Mavericks",
    "sources": [
     "lastroundai"
    ]
@@ -15504,14 +15432,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "reprise",
-   "name": "Reprise",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "rerun",
    "name": "Rerun",
    "sources": [
@@ -17688,14 +17608,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "stork",
-   "name": "Stork Labs",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "stout",
    "name": "Stout",
    "sources": [
@@ -18299,14 +18211,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "tavily",
-   "name": "Tavily",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "tavus",
    "name": "Tavus",
    "sources": [
@@ -18883,14 +18787,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "toma",
-   "name": "Toma",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "tomo",
    "name": "Tomo Mortgage",
    "sources": [
@@ -19323,14 +19219,6 @@
   },
   {
    "ats": "ashby",
-   "slug": "umbrel",
-   "name": "Umbrel",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
    "slug": "unblocked",
    "name": "Unblocked",
    "sources": [
@@ -19484,14 +19372,6 @@
   {
    "ats": "ashby",
    "slug": "upside",
-   "name": "Upside",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "upside-tech",
    "name": "Upside",
    "sources": [
     "lastroundai"
@@ -20269,14 +20149,6 @@
    "ats": "ashby",
    "slug": "whoop",
    "name": "Whoop",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "ashby",
-   "slug": "willow-health",
-   "name": "Willow Health",
    "sources": [
     "lastroundai"
    ]
@@ -22003,14 +21875,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "aisquared",
-   "name": "AI Squared",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "akersystems",
    "name": "Aker Systems",
    "sources": [
@@ -22293,22 +22157,6 @@
    "ats": "greenhouse",
    "slug": "alpaca",
    "name": "Alpaca",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "alphaawmeur",
-   "name": "Alpha FMC - Asset and Wealth Management Consulting - Europe",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "alphaawmnaearlycareers",
-   "name": "Alpha Asset & Wealth Management Consulting - Early Careers Opportunities",
    "sources": [
     "lastroundai"
    ]
@@ -22648,14 +22496,6 @@
    "ats": "greenhouse",
    "slug": "animed",
    "name": "AniMed Animal Hospital",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "aninebing",
-   "name": "ANINE BING",
    "sources": [
     "lastroundai"
    ]
@@ -23256,22 +23096,6 @@
    "ats": "greenhouse",
    "slug": "arkestroinc",
    "name": "Arkestro",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "arkoselabs",
-   "name": "Arkose Labs",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "arkoselabsindia",
-   "name": "Arkose Labs - India",
    "sources": [
     "lastroundai"
    ]
@@ -24592,14 +24416,6 @@
    "ats": "greenhouse",
    "slug": "behavox",
    "name": "Behavox",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "bellacanvas",
-   "name": "BELLA+CANVAS",
    "sources": [
     "lastroundai"
    ]
@@ -26078,6 +25894,14 @@
   },
   {
    "ats": "greenhouse",
+   "slug": "buzzfeed",
+   "name": "Employment Opportunities at BuzzFeed, Inc.",
+   "sources": [
+    "lastroundai"
+   ]
+  },
+  {
+   "ats": "greenhouse",
    "slug": "buzzsolutions",
    "name": "Buzz Solutions",
    "sources": [
@@ -27424,14 +27248,6 @@
    "ats": "greenhouse",
    "slug": "classapp",
    "name": "ClassApp",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "classpass",
-   "name": "ClassPass",
    "sources": [
     "lastroundai"
    ]
@@ -30851,14 +30667,6 @@
    "ats": "greenhouse",
    "slug": "emslinqinc",
    "name": "LINQ",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "emtrain",
-   "name": "Emtrain",
    "sources": [
     "lastroundai"
    ]
@@ -37255,14 +37063,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "iterable",
-   "name": "Iterable",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "iterativehealth",
    "name": "Iterative Health",
    "sources": [
@@ -37913,14 +37713,6 @@
    "ats": "greenhouse",
    "slug": "kalvistapharmaceuticals",
    "name": "kalvistapharmaceuticals",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "kambi",
-   "name": "kambi",
    "sources": [
     "lastroundai"
    ]
@@ -51221,14 +51013,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "sxseenterprisesllc",
-   "name": "sxseenterprisesllc",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "sylogist",
    "name": "sylogist",
    "sources": [
@@ -52839,14 +52623,6 @@
    "ats": "greenhouse",
    "slug": "tosscareers",
    "name": "Toss",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "touchbistro",
-   "name": "TouchBistro",
    "sources": [
     "lastroundai"
    ]
@@ -55789,14 +55565,6 @@
   },
   {
    "ats": "greenhouse",
-   "slug": "wowhead",
-   "name": "wowhead",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
    "slug": "wpp",
    "name": "WPP",
    "sources": [
@@ -56175,14 +55943,6 @@
    "ats": "greenhouse",
    "slug": "yurtsai",
    "name": "Legion Intelligence",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "greenhouse",
-   "slug": "zam",
-   "name": "zam",
    "sources": [
     "lastroundai"
    ]
@@ -57247,14 +57007,6 @@
    "ats": "lever",
    "slug": "anagramsecurity",
    "name": "Anagram",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "analogfolk",
-   "name": "AnalogFolk",
    "sources": [
     "lastroundai"
    ]
@@ -61648,14 +61400,6 @@
   },
   {
    "ats": "lever",
-   "slug": "FitifyWorkouts",
-   "name": "Fitify",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "fitzmark",
    "name": "FitzMark",
    "sources": [
@@ -62042,14 +61786,6 @@
    "ats": "lever",
    "slug": "gausslabs",
    "name": "Gauss Labs",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "gearset",
-   "name": "Gearset",
    "sources": [
     "lastroundai"
    ]
@@ -62562,14 +62298,6 @@
    "ats": "lever",
    "slug": "grizzly.co",
    "name": "Grizzly",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "groupbyinc",
-   "name": "Rezolve Ai",
    "sources": [
     "lastroundai"
    ]
@@ -63976,14 +63704,6 @@
   },
   {
    "ats": "lever",
-   "slug": "kiddom",
-   "name": "Kiddom",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "kingfish-company",
    "name": "The Kingfish Company",
    "sources": [
@@ -65356,14 +65076,6 @@
    "ats": "lever",
    "slug": "metergysolutions",
    "name": "Metergy Solutions",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "metlife",
-   "name": "MetLife",
    "sources": [
     "lastroundai"
    ]
@@ -67098,14 +66810,6 @@
   },
   {
    "ats": "lever",
-   "slug": "playonsports",
-   "name": "PlayOn",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "playplay",
    "name": "PlayPlay",
    "sources": [
@@ -67124,14 +66828,6 @@
    "ats": "lever",
    "slug": "plexus",
    "name": "Plexus",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "plivo",
-   "name": "Plivo",
    "sources": [
     "lastroundai"
    ]
@@ -67442,14 +67138,6 @@
   },
   {
    "ats": "lever",
-   "slug": "ppnc",
-   "name": "Planned Parenthood of Nassau County, Inc.",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "ppncny",
    "name": "Planned Parenthood of the North Country New York, Inc.",
    "sources": [
@@ -67476,14 +67164,6 @@
    "ats": "lever",
    "slug": "ppse",
    "name": "Planned Parenthood Southeast, Inc.",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "ppsenfl",
-   "name": "Planned Parenthood of South, East and North Florida",
    "sources": [
     "lastroundai"
    ]
@@ -68260,14 +67940,6 @@
    "ats": "lever",
    "slug": "recordpoint",
    "name": "RecordPoint",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "recurrency",
-   "name": "Recurrency",
    "sources": [
     "lastroundai"
    ]
@@ -69372,14 +69044,6 @@
    "ats": "lever",
    "slug": "sitetracker",
    "name": "Sitetracker",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "skello",
-   "name": "Skello",
    "sources": [
     "lastroundai"
    ]
@@ -71165,14 +70829,6 @@
   },
   {
    "ats": "lever",
-   "slug": "trio",
-   "name": "TRIO",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
    "slug": "tripalink",
    "name": "Tripalink",
    "sources": [
@@ -71263,14 +70919,6 @@
    "ats": "lever",
    "slug": "tryjeeves",
    "name": "Jeeves",
-   "sources": [
-    "lastroundai"
-   ]
-  },
-  {
-   "ats": "lever",
-   "slug": "tryriot",
-   "name": "Riot Security",
    "sources": [
     "lastroundai"
    ]
