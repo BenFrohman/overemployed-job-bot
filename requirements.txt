@@ -11,7 +11,7 @@ pydantic-settings==2.16.3
 reportlab==5.1.0
 python-multipart==0.0.31
 passlib[bcrypt]==1.7.4
-bcrypt==4.0.1
+bcrypt==5.0.0
 python-jose[cryptography]==3.5.0
 cryptography>=50.0.2
 aiofiles==25.1.0
